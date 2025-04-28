@@ -1,5 +1,5 @@
 import { ProductFactory } from '../classes/productFactory';
-import { IProduct } from '../interface/IProduct';
+import { IProduct } from './IProduct';
 
 describe('ProductFactory', () => {
     it('should create a Drums product from valid data', () => {

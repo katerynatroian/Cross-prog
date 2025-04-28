@@ -1,0 +1,75 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Редагування товару</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input
+          label="Назва"
+          labelPlacement="floating"
+          errorText="Назва повинна бути більша за 3 символи"
+          [value]="product.getName()"
+          formControlName="name"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Вартість"
+          labelPlacement="floating"
+          errorText="Ціна повинна бути більша за 0"
+          [value]="product.getPrice()"
+          formControlName="price"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Бренд"
+          labelPlacement="floating"
+          errorText="Назва бренду повинна бути більша за 3 символи"
+          [value]="product.getBrand()"
+          formControlName="brand"
+        ></ion-input>
+      </ion-item>
+
+      <fieldset *ngIf="product.getType() === types[0]">
+        <ion-item>
+          <ion-input
+            label="Кількість барабанів від 2 до 5"
+            labelPlacement="floating"
+            type="number"
+            formControlName="numberOfPieces"
+            errorText="Кількість барабанів має бути від 2 до 5"
+          ></ion-input>
+        </ion-item>
+      </fieldset>
+
+      <fieldset *ngIf="product.getType() === types[1]">
+        <ion-item>
+          <ion-input
+            label="Кількість клавіш від 88 до 108"
+            formControlName="numbersOfKeys"
+            type="number"
+            labelPlacement="floating"
+            errorText="Кількість клавіш має бути від 88 до 108"
+          ></ion-input>
+        </ion-item>
+      </fieldset>
+
+      <fieldset *ngIf="product.getType() === types[2]">
+        <ion-item>
+          <ion-input
+            label="Кількість струн від 3 до 8"
+            formControlName="numbersOfStrings"
+            type="number"
+            labelPlacement="floating"
+            errorText="Кількість струн має бути від 3 до 8"
+          ></ion-input>
+        </ion-item>
+      </fieldset>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-button type="submit" (click)="onSubmit()">Submit</ion-button>
+
+</form>

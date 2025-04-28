@@ -1,7 +1,7 @@
 import { Drums } from "./drums";
 import { Guitars } from "./guitar";
 import { Piano } from "./piano";
-import { IProduct } from "../interface/IProduct";
+import { IProduct } from "./IProduct";
 import { productType } from "./productType";
 export class ProductFactory {
     static createProduct(data: any): IProduct {

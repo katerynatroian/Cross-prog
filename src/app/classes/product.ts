@@ -1,4 +1,4 @@
-import { IProduct } from "../interface/IProduct";
+import { IProduct } from "./IProduct";
 export abstract class Product implements IProduct {
     private id: number = 0;
     private name: string = '';

@@ -1,8 +1,16 @@
 <app-my-header></app-my-header>
 
 <ion-content [fullscreen]="true">
+
+
+  <ion-button (click)="addFormShow()">Додати товар</ion-button>
+  <app-add-product
+    *ngIf="showAddForm"
+    (productAdd)="addProduct($event)"
+  ></app-add-product>
+  
   <ion-card
-    *ngFor="let product of service.products"
+    *ngFor="let product of service.products; let i = index"
   >
     <ion-card-header>
       <ion-card-title>{{ product.getName() }}</ion-card-title>
@@ -17,6 +25,12 @@
         <ion-label> Ціна: {{ product.getPrice() }}$</ion-label>
       </ion-item>
     </ion-card-content>
-    <ion-button>Купити</ion-button>
+    
+    <ion-button (click)="editFormShow(i)">Редагувати</ion-button>
+    <app-edit-product
+      *ngIf="showEditForm && i == editFormnumber"
+      (productEdit)="editProduct($event, i)"
+      [product]="product">
+    </app-edit-product>
   </ion-card>
 </ion-content>

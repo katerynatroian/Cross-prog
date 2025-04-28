@@ -23,4 +23,4 @@ export class Piano extends Product {
     override getType(): string {
         return 'Piano';
     }
-}
+}  

@@ -1,0 +1,91 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Додати товар</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input
+          label="Назва"
+          formControlName="name"
+          labelPlacement="floating"
+          errorText="Назва повинна бути більша за 3 символи"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Вартість"
+          formControlName="price"
+          labelPlacement="floating"
+          errorText="Ціна повинна бути більша за 0"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Бренд"
+          formControlName="brand"
+          labelPlacement="floating"
+          errorText="Назва бренду повинна бути більша за 3 символи"
+        ></ion-input>
+      </ion-item>
+
+      <ion-segment (ionChange)="onTypeChange($event.detail.value)">
+        <ion-segment-button value="Drums" content-id="Drums">
+          <ion-label>Drums</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Piano" content-id="Piano">
+          <ion-label>Piano</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Guitar" content-id="Guitar">
+          <ion-label>Guitar</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-segment-view>
+        <ion-segment-content id="Drums">
+          <ion-item>
+            <ion-input
+              label="Кількість барабанів від 2 до 5"
+              formControlName="numberOfPieces"
+              type="number"
+              labelPlacement="floating"
+              errorText="Кількість барабанів має бути від 2 до 5"
+            ></ion-input>
+          </ion-item>
+        </ion-segment-content>
+
+        <ion-segment-content id="Piano">
+          <ion-item>
+            <ion-input
+              *ngIf="currentType === types[1]"
+              label="Кількість клавіш від 88 до 108"
+              formControlName="numbersOfKeys"
+              type="number"
+              labelPlacement="floating"
+              errorText="Кількість клавиш має бути від 88 до 108"
+            ></ion-input>
+          </ion-item>
+        </ion-segment-content>
+
+
+        <ion-segment-content id="Guitar">
+          <ion-item>
+            <ion-input
+              *ngIf="currentType === types[2]"
+              label="Кількість струн від 3 до 8"
+              formControlName="numbersOfKeys"
+              type="number"
+              labelPlacement="floating"
+              errorText="Кількість струн має бути від 3 до 8"
+            ></ion-input>
+          </ion-item>
+        </ion-segment-content>
+      </ion-segment-view>
+    </ion-card-content>
+  </ion-card>
+  <ion-button
+    type="submit"
+    (click)="onSubmit()"
+    [disabled]="productForm.invalid"
+  >Submit</ion-button>
+</form>
