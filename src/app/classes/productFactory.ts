@@ -1,6 +1,7 @@
 import { Drums } from "./drums";
 import { Guitars } from "./guitar";
 import { Piano } from "./piano";
+import { Trombone } from "./trombone";
 import { IProduct } from "./IProduct";
 import { productType } from "./productType";
 export class ProductFactory {
@@ -27,6 +28,13 @@ export class ProductFactory {
                     data.price,
                     data.brand,
                     data.numbersOfStrings);
+            case productType[3]:
+                return new Trombone(
+                    data.id,
+                    data.name,
+                    data.price,
+                    data.brand,
+                    data.numberOfValves);
             default:
                 throw new Error(`Unknown product type: ${data.type}`);
         }

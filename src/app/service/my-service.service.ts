@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../classes/IProduct';
 import { ProductFactory } from '../classes/productFactory';
+import { ConfigService } from './config.service';
+import { ProductType } from '../classes/productType';
 
 const API_URL = 'https://api.jsonbin.io/v3/b/6808e96c8a456b79668f9cab';
 const API_KEY_Master = '$2a$10$0AOXojDkIORgxTm/qixBo.Z4yl44tO9.SlMRFYU0ZL7DqbzVqOysC';
@@ -14,7 +16,6 @@ export class MyServiceService {
   addProduct(product: IProduct) {
     this.products.push(product);
   }
-    constructor() { }
     public async load() {
       fetch(API_URL, {
         method: 'GET',
@@ -29,13 +30,24 @@ export class MyServiceService {
           let data = json;
           data = data.record;
           console.log(data);
-          if (Array.isArray(data.record)) {
-            let products = data.record.map((item: any) => ProductFactory.createProduct(item));
-            this.products = [];
-            products.forEach((product: any) => this.addProduct(product));
-          } else {
-            console.error("Data is not an array");
-          }
+          let products = data.record.map((item: any) => ProductFactory.createProduct(item));
+          this.products = [];
+          products.forEach((product: any) => this.addProduct(product));
+          let type = this.configService.type$.value;
+          this.search(type);
         });
     }
+    searchProducts: IProduct[] = [];
+    search(type: ProductType) {
+      this.searchProducts = this.products.filter((product) => {
+        return product.getType() == type;
+      });
+      console.log(this.searchProducts);
+    }
+    constructor(private configService: ConfigService) { }
+    typeSub = this.configService.type$
+      .subscribe(() => {
+        let type = this. configService.type$.value;
+        this.search(type);
+      });
 }

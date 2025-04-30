@@ -3,6 +3,7 @@ import { productType, ProductType } from "./productType";
 import { stringsValidator } from "../add-product/validators/stringsValidator";
 import { pieceValidator } from "../add-product/validators/pieceValidator";
 import { keysValidator } from "../add-product/validators/keysValidator";
+import { valvesValidator } from "../add-product/validators/valvesValidator";
 
 export function formConstructor(
     type: string,
@@ -22,5 +23,7 @@ export function formConstructor(
         productForm.addControl('numbersOfKeys', fb.control('', [Validators.required, keysValidator]));
     } else if (type === productType[2]) {
         productForm.addControl('numbersOfStrings', fb.control('', [Validators.required, stringsValidator]));
+    } else if (type === productType[3]) {
+        productForm.addControl('numberOfValves', fb.control('', [Validators.required, valvesValidator]));
     }
 }
