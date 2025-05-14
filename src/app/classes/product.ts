@@ -1,16 +1,15 @@
 import { IProduct } from "./IProduct";
 export abstract class Product implements IProduct {
-    private id: number = 0;
+    private id: string = '';
     private name: string = '';
     private price: number = 1;
     private brand: string = '';
     constructor(
-        id: number, 
+        id: string, 
         name: string, 
         price: number,
         brand: string
     ) {
-        if (id < 0) throw new Error('id < 0');
         if (price < 1) throw new Error('price < 1');
         this.id = id;
         this.name = name;
@@ -29,7 +28,7 @@ export abstract class Product implements IProduct {
     getType(): string {
         return 'Product';
     }
-    getId(): number {
+    getId(): string {
         return this.id;
     }
     getBrand(): string {

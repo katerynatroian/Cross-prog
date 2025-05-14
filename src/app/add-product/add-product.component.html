@@ -57,7 +57,6 @@
         <ion-segment-content id="Piano">
           <ion-item>
             <ion-input
-              *ngIf="currentType === types[1]"
               label="Кількість клавіш від 88 до 108"
               formControlName="numbersOfKeys"
               type="number"
@@ -71,7 +70,6 @@
         <ion-segment-content id="Guitar">
           <ion-item>
             <ion-input
-              *ngIf="currentType === types[2]"
               label="Кількість струн від 3 до 8"
               formControlName="numbersOfKeys"
               type="number"

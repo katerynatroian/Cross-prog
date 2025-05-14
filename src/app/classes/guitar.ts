@@ -2,7 +2,7 @@ import { Product } from "./product";
 export class Guitars extends Product {
     private numbersOfStrings: number;
     constructor(
-        id: number, 
+        id: string, 
         name: string, 
         price: number,
         brand: string,

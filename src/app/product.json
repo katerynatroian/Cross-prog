@@ -1,0 +1,204 @@
+{
+    "products" : {
+      "productId1" : {
+        "type": "Drums",
+        "id": 1,
+        "name": "Yamaha Stage Custom",
+        "price": 750,
+        "brand": "Yamaha",
+        "numberOfPieces": 6
+      },
+      "productId2" : {
+        "type": "Drums",
+        "id": 2,
+        "name": "Pearl Roadshow",
+        "price": 600,
+        "brand": "Pearl",
+        "numberOfPieces": 5
+      },
+      "productId3" : {
+        "type": "Drums",
+        "id": 3,
+        "name": "Tama Imperialstar",
+        "price": 820,
+        "brand": "Tama",
+        "numberOfPieces": 6
+      },
+      "productId4" : {
+        "type": "Drums",
+        "id": 4,
+        "name": "Mapex Tornado",
+        "price": 500,
+        "brand": "Mapex",
+        "numberOfPieces": 5
+      },
+      "productId5" : {
+        "type": "Drums",
+        "id": 5,
+        "name": "Ludwig Accent",
+        "price": 690,
+        "brand": "Ludwig",
+        "numberOfPieces": 7
+      },
+      "productId6" : {
+        "type": "Piano",
+        "id": 6,
+        "name": "Yamaha P-125",
+        "price": 650,
+        "brand": "Yamaha",
+        "numbersOfKeys": 88
+      },
+      "productId7" : {
+        "type": "Piano",
+        "id": 7,
+        "name": "Roland FP-10",
+        "price": 550,
+        "brand": "Roland",
+        "numbersOfKeys": 88
+      },
+      "productId8" : {
+        "type": "Piano",
+        "id": 8,
+        "name": "Korg B2",
+        "price": 500,
+        "brand": "Korg",
+        "numbersOfKeys": 88
+      },
+      "productId9" : {
+        "type": "Piano",
+        "id": 9,
+        "name": "Casio CDP-S100",
+        "price": 430,
+        "brand": "Casio",
+        "numbersOfKeys": 88
+      },
+      "productId10" : {
+        "type": "Piano",
+        "id": 10,
+        "name": "Alesis Recital Pro",
+        "price": 399,
+        "brand": "Alesis",
+        "numbersOfKeys": 88
+      },
+      "productId11" : {
+        "type": "Guitar",
+        "id": 11,
+        "name": "Fender Stratocaster",
+        "price": 850,
+        "brand": "Fender",
+        "numbersOfStrings": 6
+      },
+      "productId12" : {
+        "type": "Guitar",
+        "id": 12,
+        "name": "Gibson Les Paul",
+        "price": 1200,
+        "brand": "Gibson",
+        "numbersOfStrings": 6
+      },
+      "productId13" : {
+        "type": "Guitar",
+        "id": 13,
+        "name": "Ibanez GRX70",
+        "price": 280,
+        "brand": "Ibanez",
+        "numbersOfStrings": 5
+      },
+      "productId14" : {
+        "type": "Guitar",
+        "id": 14,
+        "name": "Yamaha Pacifica",
+        "price": 300,
+        "brand": "Yamaha",
+        "numbersOfStrings": 6
+      },
+      "productId15" : {
+        "type": "Guitar",
+        "id": 15,
+        "name": "Epiphone SG",
+        "price": 450,
+        "brand": "Epiphone",
+        "numbersOfStrings": 6
+      },
+      "productId16" : {
+        "type": "Guitar",
+        "id": 16,
+        "name": "Fender Telecaster",
+        "price": 900,
+        "brand": "Fender",
+        "numbersOfStrings": 7
+      },
+      "productId17" : {
+        "type": "Piano",
+        "id": 17,
+        "name": "Nord Stage 3",
+        "price": 3700,
+        "brand": "Nord",
+        "numbersOfKeys": 88
+      },
+      "productId18" : {
+        "type": "Drums",
+        "id": 18,
+        "name": "Gretsch Catalina Club",
+        "price": 999,
+        "brand": "Gretsch",
+        "numberOfPieces": 4
+      },
+      "productId19" : {
+        "type": "Piano",
+        "id": 19,
+        "name": "Casio Privia PX-770",
+        "price": 699,
+        "brand": "Casio",
+        "numbersOfKeys": 88
+      },
+      "productId20" : {
+        "type": "Guitar",
+        "id": 20,
+        "name": "Jackson Dinky",
+        "price": 650,
+        "brand": "Jackson",
+        "numbersOfStrings": 6
+      },
+      "productId21" : {
+        "type": "Trombone",
+        "id": 21,
+        "name": "Yamaha YSL-354",
+        "price": 1200,
+        "brand": "Yamaha",
+        "numberOfValves": 3
+      },
+      "productId22" : {
+        "type": "Trombone",
+        "id": 22,
+        "name": "Jupiter JTB710",
+        "price": 1500,
+        "brand": "Jupiter",
+        "numberOfValves": 4
+      },
+      "productId23" : {
+        "type": "Trombone",
+        "id": 23,
+        "name": "Bach TB200",
+        "price": 1300,
+        "brand": "Bach",
+        "numberOfValves": 3
+      },
+      "productId24" : {
+        "type": "Trombone",
+        "id": 24,
+        "name": "Conn 88H",
+        "price": 1800,
+        "brand": "Conn",
+        "numberOfValves": 3
+      },
+      "productId25" : {
+        "type": "Trombone",
+        "id": 25,
+        "name": "King 606",
+        "price": 1100,
+        "brand": "King",
+        "numberOfValves": 3
+      }
+    }
+  }

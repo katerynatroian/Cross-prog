@@ -1,53 +1,45 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../classes/IProduct';
 import { ProductFactory } from '../classes/productFactory';
-import { ConfigService } from './config.service';
-import { ProductType } from '../classes/productType';
-
-const API_URL = 'https://api.jsonbin.io/v3/b/6808e96c8a456b79668f9cab';
-const API_KEY_Master = '$2a$10$0AOXojDkIORgxTm/qixBo.Z4yl44tO9.SlMRFYU0ZL7DqbzVqOysC';
-const API_KEY_ACCESS = '$2a$10$uZ307WYFzhJza.TJamVD2uUF/YA9Jtwx/ZUKNSle7YrsEJMpFn58e';
+import { BehaviorSubject } from 'rxjs';
+import { Database, ref, set, push, update, remove } from '@angular/fire/database';
+import { onValue } from 'firebase/database';
+import { productType } from '../classes/productType';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyServiceService {
-  public products: IProduct[] = [];
-  addProduct(product: IProduct) {
-    this.products.push(product);
+  private productsSubject = new BehaviorSubject<IProduct[]>([]);
+  products$ = this.productsSubject.asObservable();
+  constructor(private db: Database) {}
+  fetchProducts(): void {
+    const productRef = ref(this.db, 'products');
+    console.log(productRef);
+    onValue(productRef, (snapshot) => {
+      const data = snapshot.val();
+      const products = data ?
+        Object.entries(data).map(([key, value]: [string, any]) => 
+          ProductFactory.createProduct({...value, id: key})): [];
+        this.productsSubject.next(products);
+    });
   }
-    public async load() {
-      fetch(API_URL, {
-        method: 'GET',
-        headers: { 
-          'X-Master-Key': API_KEY_Master, 
-          'X-Access-Key': API_KEY_ACCESS, 
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          let data = json;
-          data = data.record;
-          console.log(data);
-          let products = data.record.map((item: any) => ProductFactory.createProduct(item));
-          this.products = [];
-          products.forEach((product: any) => this.addProduct(product));
-          let type = this.configService.type$.value;
-          this.search(type);
-        });
-    }
-    searchProducts: IProduct[] = [];
-    search(type: ProductType) {
-      this.searchProducts = this.products.filter((product) => {
-        return product.getType() == type;
-      });
-      console.log(this.searchProducts);
-    }
-    constructor(private configService: ConfigService) { }
-    typeSub = this.configService.type$
-      .subscribe(() => {
-        let type = this. configService.type$.value;
-        this.search(type);
-      });
+  addProduct(product: IProduct): void {
+    const productRef = ref(this.db, 'products');
+    const newProductRef = push(productRef);
+    set(newProductRef, {
+      ...product,
+      id: newProductRef.key,
+      type: product.getType(),
+    });
+  }
+  editProduct(updatedProduct: IProduct): void {
+    console.log(updatedProduct);
+    const productRef = ref(this.db, `products/${updatedProduct.getId()}`);
+    update(productRef, updatedProduct);
+  }
+  deleteProduct(productId: string): void {
+    const productRef = ref(this.db, `products/${productId}`);
+    remove(productRef);
+  }
 }

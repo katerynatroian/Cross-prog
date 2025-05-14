@@ -8,6 +8,7 @@ import { EditProductComponent } from "../edit-product/edit-product.component";
 import { ConfigService } from '../service/config.service';
 import { Subscription } from 'rxjs';
 import { productType, ProductType } from '../classes/productType';
+import { IProduct } from '../classes/IProduct';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +18,35 @@ import { productType, ProductType } from '../classes/productType';
   imports: [CommonModule, IonButton, MyHeaderComponent, IonLabel, IonItem, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonContent, AddProductComponent, EditProductComponent],
 })
 export class HomePage implements OnInit {
-  constructor(
-    public service: MyServiceService,
-    private configService: ConfigService
-  ) {}
+  products: IProduct[] = [];
+  showAddForm = false;
+  addFormShow() {
+    this.showAddForm = true;
+  }
+  addProduct($event: any) {
+    this.service.addProduct($event);
+    this.showAddForm = false;
+  }
+  showEditForm = false;
+  editFormnumber = 0;
+  editFormShow(i: number) {
+    this.showEditForm = true;
+    this.editFormnumber = i;
+  }
+  editProduct($event: any, i: number) {
+    this.service.editProduct($event);
+    this.showEditForm = false
+  }
+  constructor(private service: MyServiceService) {}
 
+  ngOnInit(): void {
+    this.service.products$.subscribe((products) => {
+      this.products = products;
+    });
+    this.service.fetchProducts();
+  }
+  
+/*  
   type: ProductType = productType[0];
   count = 0;
   showAddForm = false;
@@ -37,6 +62,10 @@ export class HomePage implements OnInit {
     this.subscriptions.push(typeSub);
   }
 
+  editProduct($event: any, i: number) {
+    this.service.products[i] = $event;
+    this.showEditForm = false;
+  }
   nextType() {
     if (this.count < productType.length - 1) {
       this.count++;
@@ -50,22 +79,8 @@ export class HomePage implements OnInit {
     this.showAddForm = true;
   }
 
-  addProduct($event: any) {
-    this.service.addProduct($event);
-    this.showAddForm = false;
-  }
-
-  editFormShow(i: number) {
-    this.showEditForm = true;
-    this.editFormnumber = i;
-  }
-
-  editProduct($event: any, i: number) {
-    this.service.products[i] = $event;
-    this.showEditForm = false;
-  }
-
   ngOnDestroy() {
     this.subscriptions.forEach((s) => s.unsubscribe());
-  }
+  } 
+*/
 }

@@ -26,12 +26,16 @@ export class EditProductComponent  implements OnInit {
     if (this.productForm.valid) {
       const formData = this.productForm.value;
       formData.type = this.product.getType();
+      
+      formData.id = this.product.getId();
+  
       const updateproduct = ProductFactory.createProduct(formData);
       this.productEdit.emit(updateproduct);
     } else {
       console.error('Form is invalid');
     }
   }
+  
 
   ngOnInit() {
     this.productForm = this.fb.group({

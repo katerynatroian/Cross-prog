@@ -2,7 +2,7 @@ import { Product } from "./product";
 export class Piano extends Product {
     private numbersOfKeys: number;
     constructor(
-        id: number, 
+        id: string, 
         name: string, 
         price: number,
         brand: string,
